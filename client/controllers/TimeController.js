@@ -96,6 +96,7 @@ var timeController = {
   },
 
   stringifyTime: function(spot, flag) {
+    console.log(spot);
     var timeString = "";
     if (spot.start && Number(spot.start) > new Date().getTime()) {
       if (flag) {
@@ -106,7 +107,9 @@ var timeController = {
       if (flag) {
         timeString += "Ending in ";
       }
-      timeString += timeController.msToDuration(Number(spot.end) + Number(spot.start) - new Date());
+      console.log("END", spot.end);
+      console.log("START", Number(spot.start));
+      timeString += timeController.msToDuration(Number(spot.end) + Number(spot.start) - new Date().getTime());
       if (!flag) {
         timeString += " left";
       }

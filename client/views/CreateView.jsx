@@ -78,9 +78,9 @@ var CreateView = React.createClass({
   sendSpot: function (event) {
     event.preventDefault();
     var context = this;
-    if(this.state.hours || this.state.minutes) {
-      var duration = timeController.hoursToMS(this.state.hours) + timeController.minutesToMS(this.state.minutes);
-    }
+
+    var duration = timeController.hoursToMS(this.state.hours) + timeController.minutesToMS(this.state.minutes);
+    console.log("DURATION =========>", duration);
     $.ajax({
       method: 'POST',
       url: '/api/create',
@@ -92,9 +92,10 @@ var CreateView = React.createClass({
         address: context.state.address,
         description: context.state.description,
         start: timeController.timeToMS(context.state.start),
-        end: duration
+        end: duration.toString()
       },
       success: function (data) {
+        console.log("DATA ===========>", data);
         globalState.createState = undefined;
         socket.emit('newSpot', data);
         window.location = '/#/';

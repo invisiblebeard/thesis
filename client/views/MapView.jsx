@@ -101,6 +101,7 @@ var MapView = React.createClass({
     var context = this;
 
     for(var i = 0; i < context.state.spots.length; i++) {
+      console.log(spot);
       var spot = this.state.spots[i];
       // Skips spots where the start time is in past or if spot is tracker
       if (spot.lastId || timeController.stringifyTime(spot).charAt(0) === "-") {
@@ -203,9 +204,9 @@ var FilterSearch = React.createClass({
   
   render: function () {
     return (
-      <div style={{width: 'calc(100vw / 2)', opacity: '0.75'}}>
+      <div style={{width: 'calc(100vw / 2)', opacity: '.75'}}>
         <form className={this.props.filterClass} style={{padding: '0px'}} onChange={this.handleChange}>
-          <input type="text" id="filter-search" placeholder="Filter Spots" defaultValue={this.state.filter || ''} autoComplete='off' />
+          <input style={{boxShadow: '0px 0px 0px 0px #CCCCCC'}} type="text" id="filter-search" placeholder="Filter" defaultValue={this.state.filter || ''} autoComplete='off' />
         </form>
       </div>
     )
