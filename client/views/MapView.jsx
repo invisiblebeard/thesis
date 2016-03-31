@@ -101,7 +101,6 @@ var MapView = React.createClass({
     var context = this;
 
     for(var i = 0; i < context.state.spots.length; i++) {
-      console.log(spot);
       var spot = this.state.spots[i];
       // Skips spots where the start time is in past or if spot is tracker
       if (spot.lastId || timeController.stringifyTime(spot).charAt(0) === "-") {
